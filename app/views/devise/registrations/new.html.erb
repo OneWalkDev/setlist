@@ -1,0 +1,36 @@
+<div class="h-screen w-screen flex justify-center items-center bg-gray-100">
+  <div class="w-[650px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <h2 class="text-xl text-center mb-3">会員登録</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="mb-6">
+        <%= f.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= f.text_field  :name, autofocus: true, autocomplete: "name", id: "name", class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required:true %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email", class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", required:true %>
+      </div>
+
+      <div class="mb-6">
+        <%= f.label :password , class:"block text-sm font-medium text-gray-900 dark:text-white"%>
+        <% if @minimum_password_length %>
+        <span class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">(最短 <%= @minimum_password_length %>文字)</span>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password",class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder:"•••••••••", minlength:8, maxlength:128,pattern: "(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\u0020-\u007E])(?=.*[\u1F600-\u1F64F]){8,128}" , required:true%>
+      </div>
+
+      <div class="mb-6">
+        <%= f.label :password_confirmation, class:"block mb-2 text-sm font-medium text-gray-900 dark:text-white"%>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder:"•••••••••", required:true %>
+      </div>
+
+      <div class="actions text-center">
+        <%= f.submit "登録", class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+      </div>
+    <% end %>
+  </div>
+</div>
